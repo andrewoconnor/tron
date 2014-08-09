@@ -6,19 +6,19 @@
         var key;
 
         switch(code) {
-        case 32:
-            key = 'SPACE'; break;
-        case 65:
-            key = 'A'; break;
-        case 87:
-            key = 'W'; break;
-        case 68:
-            key = 'D'; break;
-        case 83:
-            key = 'S'; break;
-        default:
-            // Convert ASCII codes to letters
-            key = String.fromCharCode(code);
+            case 32:
+                key = 'SPACE'; break;
+            case 65:
+                key = 'A'; break;
+            case 87:
+                key = 'W'; break;
+            case 68:
+                key = 'D'; break;
+            case 83:
+                key = 'S'; break;
+            default:
+                // Convert ASCII codes to letters
+                key = String.fromCharCode(code);
         }
 
         pressedKeys[key] = status;

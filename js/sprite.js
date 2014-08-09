@@ -13,15 +13,10 @@
 
 	Sprite.prototype = {
 		needToRotate: function() {
-			if (this.deg == 0 && this.dir != 'up')
-				return true;
-			if (this.deg == 180 && this.dir != 'down')
-				return true;
-			if (this.deg == 90 && this.dir != 'right')
-				return true;
-			if (this.deg == 270 && this.dir != 'left')
-				return true;
-			return false;
+			return (this.deg == 0 && this.dir != 'up') ||
+			    (this.deg == 180 && this.dir != 'down') ||
+                (this.deg == 90 && this.dir != 'right') ||
+			    (this.deg == 270 && this.dir != 'left');
 		},
 		update: function(pos, deg) {
 			this.pos = pos;
@@ -40,7 +35,7 @@
             context.save();
     		context.translate(x, y);
     		if(this.needToRotate()) {
-    			context.rotate(this.deg * Math.PI / 180);	
+    			context.rotate(this.deg * Math.PI / 180);
 			}
 			context.drawImage(resources.get(this.url), rot_x, rot_y);
 			context.restore();

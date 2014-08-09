@@ -100,7 +100,7 @@ function handleInput(dt) {
 function updateEntities(dt) {
     // Update the player sprite animation
     player.sprite.update(player.pos, player.deg);
-    document.getElementById('debug').innerHTML = player.sprite.size[1];
+    document.getElementById('debug').innerHTML = player.sprite.needToRotate();
 }
 
 
