@@ -1,7 +1,7 @@
 // A cross-browser requestAnimationFrame
 // See https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/
 var requestAnimFrame = (function(){
-    return window.requestAnimationFrame       ||
+    return window.requestAnimationFrame    ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame    ||
         window.oRequestAnimationFrame      ||
@@ -47,11 +47,7 @@ function init() {
 }
 
 // Game state
-var player = {
-	pos: [100,100],
-    deg: 0,
-	sprite: new Sprite('img/bike.png', [0, 0], [19, 79], 0, [0, 1])
-};
+var player = new Entity([100, 100], 0, new Sprite('img/bike.png', [19, 79]), 400);
 
 var lastFire = Date.now();
 var gameTime = 0;
@@ -63,7 +59,6 @@ var score = 0;
 var scoreEl = document.getElementById('score');
 
 // Speed in pixels per second
-var playerSpeed = 400;
 var bulletSpeed = 500;
 var enemySpeed = 100;
 
@@ -77,30 +72,28 @@ function update(dt) {
 
 function handleInput(dt) {
     if(input.isDown('S') || input.isDown('s')) {
-        player.pos[1] += playerSpeed * dt;    
+        player.pos[1] += player.maxSpeed * dt;
         player.deg = 180;
     }
 
     if(input.isDown('W') || input.isDown('w')) {
-        player.pos[1] -= playerSpeed * dt;
+        player.pos[1] -= player.maxSpeed * dt;
         player.deg = 0;
     }
 
     if(input.isDown('A') || input.isDown('a')) {
-        player.pos[0] -= playerSpeed * dt;
+        player.pos[0] -= player.maxSpeed * dt;
         player.deg = 270;
     }
 
     if(input.isDown('D') || input.isDown('d')) {
-        player.pos[0] += playerSpeed * dt;
+        player.pos[0] += player.maxSpeed * dt;
         player.deg = 90;
     }
 }
 
 function updateEntities(dt) {
-    // Update the player sprite animation
-    player.sprite.update(player.pos, player.deg);
-    document.getElementById('debug').innerHTML = player.sprite.needToRotate();
+    document.getElementById('debug').innerHTML = player.sprite.entity.deg;
 }
 
 

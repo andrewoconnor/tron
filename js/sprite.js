@@ -1,6 +1,5 @@
 (function() {	
-	function Sprite(url, pos, size, speed, frames, dir, once, deg, facing) {
-		this.pos = pos;
+	function Sprite(url, size, speed, frames, dir, once, deg, entity) {
 		this.size = size;
 		this.speed = typeof speed === 'number' ? speed : 0;
 		this.frames = frames;
@@ -9,23 +8,15 @@
 		this.dir = dir || 'up';
 		this.once = once;
 		this.deg = deg || 0;
+        this.entity = entity;
 	}
 
 	Sprite.prototype = {
-		needToRotate: function() {
-			return (this.deg == 0 && this.dir != 'up') ||
-			    (this.deg == 180 && this.dir != 'down') ||
-                (this.deg == 90 && this.dir != 'right') ||
-			    (this.deg == 270 && this.dir != 'left');
-		},
-		update: function(pos, deg) {
-			this.pos = pos;
-			this.deg = deg;
-		},
+		needToRotate: function() { return (this.entity.deg != 0); },
 		render: function(context) {
 
-			var x = this.pos[0];
-            var y = this.pos[1];
+			var x = this.entity.pos[0];
+            var y = this.entity.pos[1];
 
             var rot_x = -(this.size[0] + 1) / 2;
             //var rot_y = -(this.size[1] + 1) / 2;
@@ -34,8 +25,8 @@
 
             context.save();
     		context.translate(x, y);
-    		if(this.needToRotate()) {
-    			context.rotate(this.deg * Math.PI / 180);
+    		if (this.needToRotate()) {
+    			context.rotate(this.entity.deg * Math.PI / 180);
 			}
 			context.drawImage(resources.get(this.url), rot_x, rot_y);
 			context.restore();
