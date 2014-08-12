@@ -1,5 +1,5 @@
 (function() {	
-	function Sprite(url, size, speed, frames, dir, once, deg, entity) {
+	function Sprite(url, size, speed, frames, dir, once, entity) {
 		this.size = size;
 		this.speed = typeof speed === 'number' ? speed : 0;
 		this.frames = frames;
@@ -7,7 +7,6 @@
 		this.url = url;
 		this.dir = dir || 'up';
 		this.once = once;
-		this.deg = deg || 0;
         this.entity = entity;
 	}
 
@@ -25,7 +24,7 @@
 
             context.save();
     		context.translate(x, y);
-    		if (this.needToRotate()) {
+    		if (this.needToRotate) {
     			context.rotate(this.entity.deg * Math.PI / 180);
 			}
 			context.drawImage(resources.get(this.url), rot_x, rot_y);

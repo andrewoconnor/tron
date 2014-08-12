@@ -47,7 +47,8 @@ function init() {
 }
 
 // Game state
-var player = new Entity([100, 100], 0, new Sprite('img/bike.png', [19, 79]), 400);
+var player = new Entity([100, 100], 0, new Sprite(), 400);
+player.setSprite(new Sprite('img/bike.png', [19, 79]));
 
 var lastFire = Date.now();
 var gameTime = 0;
