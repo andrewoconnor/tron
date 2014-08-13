@@ -1,8 +1,7 @@
 (function() {
 
-    function Player(name) {
-        this.name = name || "unnamed";
-        Entity.call(this, [100, 100], 0, new Sprite('img/bike.png', [19, 79]), 400);
+    function Player() {
+        Entity.call(this, [100, 100], [19, 79], 0, new Sprite('img/bike.png'), 400);
     }
 
     Player.prototype = Object.create(Entity.prototype);

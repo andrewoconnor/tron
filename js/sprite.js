@@ -12,15 +12,15 @@
 
 	Sprite.prototype = {
 		needToRotate: function() { return (this.entity.deg != 0); },
-		render: function(context) {
+		render: function() {
 
 			var x = this.entity.pos[0];
             var y = this.entity.pos[1];
 
-            var rot_x = -(this.size[0] + 1) / 2;
-            //var rot_y = -(this.size[1] + 1) / 2;
+            var rot_x = -(this.entity.size[0] + 1) / 2;
+            var rot_y = -(this.entity.size[1] + 1) / 2;
             //var rot_x = 0;
-            var rot_y = 0;
+            //var rot_y = 0;
 
             context.save();
     		context.translate(x, y);

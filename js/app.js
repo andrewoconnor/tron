@@ -39,20 +39,22 @@ function main() {
 	requestAnimFrame(main);
 }
 
+var world = new World();
+
 function init() {
-	terrainPattern = context.createPattern(resources.get('img/terrain.png'), 'repeat');
-	context.translate(10, 10);
+    world.init();
 	lastTime = Date.now();
 	main();
 }
 
 // Game state
+
 var player = new Player();
+var camera = new Camera(player, world);
 
 var lastFire = Date.now();
 var gameTime = 0;
 var isGameOver;
-var terrainPattern;
 
 // The score
 var score = 0;
@@ -67,22 +69,22 @@ function update(dt) {
     gameTime += dt;
 
     player.handleInput(dt);
+    camera.update();
     updateEntities(dt);
 }
 
 function updateEntities(dt) {
-    document.getElementById('debug').innerHTML = player.sprite.entity.pos;
+    document.getElementById('debug').innerHTML = player.pos;
 }
 
 function render() {
 	// Render the terrain
-    context.fillStyle = terrainPattern;
-    context.fillRect(-10, -10, canvas.width, canvas.height);
-
+    //world.render();
+    camera.render();
     // Render the player
     renderEntity(player);
 }
 
 function renderEntity(entity) {
-    entity.sprite.render(context);
+    entity.sprite.render();
 }
