@@ -74,7 +74,7 @@ function update(dt) {
 }
 
 function updateEntities(dt) {
-    document.getElementById('debug').innerHTML = player.pos;
+    document.getElementById('debug').innerHTML = camera.pos;
 }
 
 function render() {
