@@ -47,8 +47,7 @@ function init() {
 }
 
 // Game state
-var player = new Entity([100, 100], 0, new Sprite(), 400);
-player.setSprite(new Sprite('img/bike.png', [19, 79]));
+var player = new Player();
 
 var lastFire = Date.now();
 var gameTime = 0;
@@ -67,36 +66,13 @@ var enemySpeed = 100;
 function update(dt) {
     gameTime += dt;
 
-    handleInput(dt);
+    player.handleInput(dt);
     updateEntities(dt);
-};
-
-function handleInput(dt) {
-    if(input.isDown('S') || input.isDown('s')) {
-        player.pos[1] += player.maxSpeed * dt;
-        player.deg = 180;
-    }
-
-    if(input.isDown('W') || input.isDown('w')) {
-        player.pos[1] -= player.maxSpeed * dt;
-        player.deg = 0;
-    }
-
-    if(input.isDown('A') || input.isDown('a')) {
-        player.pos[0] -= player.maxSpeed * dt;
-        player.deg = 270;
-    }
-
-    if(input.isDown('D') || input.isDown('d')) {
-        player.pos[0] += player.maxSpeed * dt;
-        player.deg = 90;
-    }
 }
 
 function updateEntities(dt) {
-    document.getElementById('debug').innerHTML = player.sprite.entity.deg;
+    document.getElementById('debug').innerHTML = player.sprite.entity.pos;
 }
-
 
 function render() {
 	// Render the terrain

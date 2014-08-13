@@ -2,7 +2,7 @@
 
     function Entity(pos, deg, sprite, maxSpeed) {
         this.pos = pos || [100, 100];
-        this.deg = deg || 0;
+        this.deg = deg;
         this.setSprite(sprite);
         this.maxSpeed = maxSpeed;
     }
