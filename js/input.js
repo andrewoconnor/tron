@@ -40,25 +40,50 @@
         isDown: function (key) {
             return pressedKeys[key.toUpperCase()];
         },
-        handleInput: function (dt) {
+        handleInput: function (dt, player) {
             if (input.isDown('S') || input.isDown('s')) {
-                player.pos[1] += player.maxSpeed * dt;
-                player.deg = 180;
+//                player.pos[1] += player.maxSpeed[0] * dt;
+//                player.deg += 180;
             }
 
             if (input.isDown('W') || input.isDown('w')) {
-                player.pos[1] -= player.maxSpeed * dt;
-                player.deg = 0;
+                distance = player.maxSpeed[0] * dt;
+//                var angle = 0;
+//                if (player.deg - 90 < 0)
+//                    angle = (360 + player.deg - 90);
+                if (player.deg > 0 && player.deg < 180)
+                    player.pos[0] = player.pos[0] + distance * Math.abs(Math.sin(player.deg));
+                else
+                    player.pos[0] = player.pos[0] - distance * Math.abs(Math.sin(player.deg));
+                if (player.deg > 270 || player.deg < 90)
+                    player.pos[1] = player.pos[1] - distance * Math.abs(Math.cos(player.deg));
+                else
+                    player.pos[1] = player.pos[1] + distance * Math.abs(Math.cos(player.deg));
+
+
+                //player.deg = 0;
+//                player.pos[1] -= player.maxSpeed[0] * dt;
+//                player.deg = 0;
             }
 
             if (input.isDown('A') || input.isDown('a')) {
-                player.pos[0] -= player.maxSpeed * dt;
-                player.deg = 270;
+                //player.pos[0] -= player.maxSpeed * dt;
+                //player.deg = 270;
+//                player.deg -= player.maxSpeed[1] * dt;
+                if (player.deg - player.maxSpeed[1] * dt < 0)
+                    player.deg = 360 + (player.deg - player.maxSpeed[1] * dt);
+                else
+                    player.deg -= player.maxSpeed[1] * dt;
             }
 
             if (input.isDown('D') || input.isDown('d')) {
-                player.pos[0] += player.maxSpeed * dt;
-                player.deg = 90;
+//                player.pos[0] += player.maxSpeed * dt;
+//                player.deg = 90;
+//                player.deg += player.maxSpeed[1] * dt;
+                if (player.deg + player.maxSpeed[1] * dt > 360)
+                    player.deg = 360 - (player.deg - player.maxSpeed[1] * dt);
+                else
+                    player.deg += player.maxSpeed[1] * dt;
             }
         }
     }

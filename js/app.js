@@ -50,7 +50,7 @@ function init() {
 // Game state
 
 var player = new Player();
-var camera = new Camera(player, world);
+var camera = new Camera(player);
 
 var lastFire = Date.now();
 var gameTime = 0;
@@ -68,13 +68,15 @@ var enemySpeed = 100;
 function update(dt) {
     gameTime += dt;
 
-    input.handleInput(dt);
+    input.handleInput(dt, player);
     camera.update();
     updateEntities(dt);
 }
 
 function updateEntities(dt) {
-    document.getElementById('debug').innerHTML = camera.pos;
+    document.getElementById('debug').innerHTML = player.deg;
+    document.getElementById('debug2').innerHTML = player.pos;
+    document.getElementById('debug3').innerHTML = camera.pos;
 }
 
 function render() {

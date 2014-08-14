@@ -5,13 +5,18 @@
         this.deg = deg || 0;
         this.size = size || [0, 0];
         this.setSprite(sprite);
-        this.maxSpeed = maxSpeed || 0;
+        this.maxSpeed = maxSpeed || [0, 0];
     }
 
     Entity.prototype = {
+        setVelocity: function(velocity) {
+            this.velocity = velocity;
+        },
         setSprite: function(sprite) {
             this.sprite = sprite;
             this.sprite.entity = this;
+        },
+        update: function() {
         }
     }
 
