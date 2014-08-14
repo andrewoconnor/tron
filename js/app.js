@@ -68,7 +68,7 @@ var enemySpeed = 100;
 function update(dt) {
     gameTime += dt;
 
-    player.handleInput(dt);
+    input.handleInput(dt);
     camera.update();
     updateEntities(dt);
 }
@@ -80,7 +80,7 @@ function updateEntities(dt) {
 function render() {
 	// Render the terrain
     //world.render();
-    camera.render();
+    world.render(camera);
     // Render the player
     renderEntity(player);
 }

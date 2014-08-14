@@ -23,7 +23,7 @@
             //var rot_y = 0;
 
             context.save();
-    		context.translate(x, y);
+    		context.translate(-camera.pos[0] + x, -camera.pos[1] + y);
     		if (this.needToRotate) {
     			context.rotate(this.entity.deg * Math.PI / 180);
 			}
