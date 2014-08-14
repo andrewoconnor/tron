@@ -18,10 +18,17 @@
             this.pos[0] = this.entity.pos[0] - this.deadzone[0];
             this.pos[1] = this.entity.pos[1] - this.deadzone[1];
 
+            this.checkWorldBounds();
+        },
+        checkWorldBounds: function() {
             if (this.pos[0] < 0)
                 this.pos[0] = 0;
             if (this.pos[1] < 0)
                 this.pos[1] = 0;
+            if (this.pos[0] + canvas.width > world.size[0])
+                this.pos[0] = world.size[0] - canvas.width;
+            if (this.pos[1] + canvas.height > world.size[1])
+                this.pos[1] = world.size[1] - canvas.height;
         }
     }
 
