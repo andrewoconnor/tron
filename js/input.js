@@ -52,15 +52,16 @@
 //                if (player.deg - 90 < 0)
 //                    angle = (360 + player.deg - 90);
                 if (player.deg > 0 && player.deg < 180)
-                    player.pos[0] = player.pos[0] + distance * Math.abs(Math.sin(player.deg));
+                    player.pos[0] = player.pos[0] + distance * Math.abs(Math.sin(player.deg * (Math.PI / 180)));
                 else
-                    player.pos[0] = player.pos[0] - distance * Math.abs(Math.sin(player.deg));
+                    player.pos[0] = player.pos[0] - distance * Math.abs(Math.sin(player.deg * (Math.PI / 180)));
                 if (player.deg > 270 || player.deg < 90)
-                    player.pos[1] = player.pos[1] - distance * Math.abs(Math.cos(player.deg));
+                    player.pos[1] = player.pos[1] - distance * Math.abs(Math.cos(player.deg * (Math.PI / 180)));
                 else
-                    player.pos[1] = player.pos[1] + distance * Math.abs(Math.cos(player.deg));
+                    player.pos[1] = player.pos[1] + distance * Math.abs(Math.cos(player.deg * (Math.PI / 180)));
 
-
+                player.magnitude[0] = distance * Math.abs(Math.sin(player.deg));
+                player.magnitude[1] = distance * Math.abs(Math.cos(player.deg));
                 //player.deg = 0;
 //                player.pos[1] -= player.maxSpeed[0] * dt;
 //                player.deg = 0;
