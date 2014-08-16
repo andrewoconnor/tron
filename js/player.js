@@ -1,7 +1,7 @@
 (function() {
 
     function Player() {
-        Entity.call(this, [400, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100]);
+        Entity.call(this, [500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
         this.magnitude = [0, 0];
     }
 

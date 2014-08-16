@@ -70,12 +70,13 @@ function update(dt) {
 
     input.handleInput(dt, player);
     camera.update();
+    player.update(dt);
     updateEntities(dt);
 }
 
 function updateEntities(dt) {
-    document.getElementById('debug').innerHTML = player.deg;
-    document.getElementById('debug2').innerHTML = Math.abs(Math.sin(player.deg * (Math.PI / 180)));
+    document.getElementById('debug').innerHTML = player.currentVelocity[0];
+    document.getElementById('debug2').innerHTML = player.currentAcceleration[0];
     document.getElementById('debug3').innerHTML = Math.abs(Math.cos(player.deg * (Math.PI / 180)));
     document.getElementById('debug4').innerHTML = player.magnitude;
 }
