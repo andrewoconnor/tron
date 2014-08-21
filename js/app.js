@@ -21,7 +21,8 @@ document.body.appendChild(canvas);
 
 resources.load([
     'img/terrain.png',
-    'img/bike.png'
+    'img/bike.png',
+    'img/guy.png'
 ]);
 
 resources.onReady(init);
@@ -51,6 +52,7 @@ function init() {
 
 var player = new Player();
 var camera = new Camera(player);
+//var guy = new Entity([470, 300], [11, 17], 0, new Sprite('img/guy.png'), [500, 100], [500, 100])
 
 var lastFire = Date.now();
 var gameTime = 0;
@@ -76,7 +78,7 @@ function update(dt) {
 
 function updateEntities(dt) {
     document.getElementById('debug').innerHTML = player.currentVelocity[0];
-    document.getElementById('debug2').innerHTML = player.currentAcceleration[0];
+    document.getElementById('debug2').innerHTML = player.pos;
     document.getElementById('debug3').innerHTML = Math.abs(Math.cos(player.deg * (Math.PI / 180)));
     document.getElementById('debug4').innerHTML = player.magnitude;
 }
@@ -87,6 +89,7 @@ function render() {
     world.render(camera);
     // Render the player
     renderEntity(player);
+//    renderEntity(guy);
 }
 
 function renderEntity(entity) {
