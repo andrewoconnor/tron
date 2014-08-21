@@ -18,7 +18,8 @@
             message['pos'] = this.pos;
             message['deg'] = this.deg;
 
-            socket.emit('entity moved', message);
+            var data = JSON.stringify(message);
+            socket.emit('entity moved', data);
         },
         checkWorldBounds: function() {
             if (this.pos[0] < 10 + ((this.size[0] + 1) / 2))
@@ -46,7 +47,8 @@
             this.applyVelocity(this.currentVelocity[0], this.deg, dt);
             this.applyVelocity(this.lastForce[0], this.lastForce[1], dt);
             this.checkWorldBounds();
-            this.sendEntityData();
+            if (this.currentVelocity[0] > 0)
+                this.sendEntityData();
 //            var distance = this.currentVelocity[0] * dt;
 //
 //            if (this.deg > 0 && this.deg < 180)
