@@ -15,8 +15,8 @@
     Entity.prototype = {
         sendEntityData: function() {
             var message = {};
-            message.push(this.pos);
-            message.push(this.deg);
+            message['pos'] = this.pos;
+            message['deg'] = this.deg;
 
             socket.emit('entity moved', message);
         },
