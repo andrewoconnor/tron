@@ -11,6 +11,8 @@ var requestAnimFrame = (function(){
         };
 })();
 
+//Create socket
+var socket = io();
 
 //Create canvas
 var canvas = document.createElement("canvas");
