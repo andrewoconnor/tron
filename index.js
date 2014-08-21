@@ -5,6 +5,10 @@ var io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/public'));
 
+// player names which are currently connected to the game
+var playerNames = {};
+var numPlayers = 0;
+
 app.get('/', function(req, res){
     res.sendFile('index.html');
 });
@@ -14,8 +18,15 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', function(){
         console.log('user disconnected');
+        numPlayers--;
     });
-
+    socket.on('add player', function () {
+        //socket.playerNum = numPlayers;
+        socket.emit('login', {
+            numPlayers: numPlayers
+        });
+        numPlayers++;
+    });
     socket.on('entity moved', function(data) {
         console.log('position - moved ' + data);
         socket.broadcast.emit('entity moved', {

@@ -82,7 +82,7 @@ function updateEntities(dt) {
     document.getElementById('debug').innerHTML = player.currentVelocity[0];
     document.getElementById('debug2').innerHTML = player.pos;
     document.getElementById('debug3').innerHTML = Math.abs(Math.cos(player.deg * (Math.PI / 180)));
-    document.getElementById('debug4').innerHTML = player.magnitude;
+    document.getElementById('debug4').innerHTML = player.playerNum;
 }
 
 function render() {
