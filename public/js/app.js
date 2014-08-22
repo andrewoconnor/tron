@@ -56,11 +56,11 @@ var player = new Player();
 var enemies = {};
 var camera = new Camera(player);
 //var guy = new Entity([470, 300], [11, 17], 0, new Sprite('img/guy.png'), [500, 100], [500, 100])
-
-socket.on('player joined', function (data) {
-    if (data.playerNum != clientNumber)
-        addPlayer(data);
-});
+//
+//socket.on('player joined', function (data) {
+//    if (data.playerNum != clientNumber)
+//        addPlayer(data);
+//});
 
 var lastFire = Date.now();
 var gameTime = 0;
