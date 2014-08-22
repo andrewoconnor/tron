@@ -4,7 +4,8 @@
     "description": "awwww yeahhh",
     "dependencies": {
         "peer": "~0.2.6",
-        "express": "~4.8.5"
+        "express": "~4.8.5",
+        "requirejs": "~2.1.14"
     }
 }
 
