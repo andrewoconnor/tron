@@ -17,8 +17,8 @@
 
     Player.prototype.login = function() {
         socket.on('login', function (data) {
-            console.log("Player num = " + data.playerNum);
-            this.playerNum = data.playerNum;
+            console.log("Player num = " + data.numPlayers);
+            this.playerNum = data.numPlayers;
         });
     }
 
