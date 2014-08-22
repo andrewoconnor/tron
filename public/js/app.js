@@ -98,7 +98,8 @@ function updateEntities(dt) {
     document.getElementById('debug').innerHTML = player.currentVelocity[0];
     document.getElementById('debug2').innerHTML = player.pos;
     document.getElementById('debug3').innerHTML = Math.abs(Math.cos(player.deg * (Math.PI / 180)));
-    document.getElementById('debug4').innerHTML = String(enemies);
+    for (var k in enemies)
+        document.getElementById('debug4').innerHTML = String(enemies[k].toString());
 }
 
 function render() {

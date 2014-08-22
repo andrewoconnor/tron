@@ -124,6 +124,9 @@
             else
                 this.deg += this.maxVelocity[1] * dt;
 
+        },
+        toString: function() {
+            return clientNumber;
         }
     }
 
