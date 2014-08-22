@@ -58,8 +58,10 @@ var camera = new Camera(player);
 //var guy = new Entity([470, 300], [11, 17], 0, new Sprite('img/guy.png'), [500, 100], [500, 100])
 //
 socket.on('player joined', function (data) {
-    if (data.playerNum != clientNumber)
+    if (data.playerNum != clientNumber) {
         console.log("got here");
+        addEnemey(data);
+    }
 });
 
 var lastFire = Date.now();
@@ -111,3 +113,7 @@ function addPlayer(data){
     console.log("Player " + data.playerNum + " joined the game.");
 }
 
+function addEnemy(data) {
+    var enemy = new Entity.call([500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
+    enemies[data.playerNum] = enemy;
+}
