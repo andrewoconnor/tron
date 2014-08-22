@@ -1,7 +1,7 @@
 var PeerServer = require('peer').PeerServer;
 var server = new PeerServer({port: 57888});
 
-var PeerClient = require('peer').Peer;
+var PeerClient = require('peerjs').Peer;
 
 var express = require('express');
 var app = express();
