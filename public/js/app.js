@@ -53,16 +53,15 @@ function init() {
 // Game state
 var clientNumber = 0;
 var player = new Player();
-var enemies = false;
-var enemy = new Entity([500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
+var enemies = {};
+//var enemy = new Entity([500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
 var camera = new Camera(player);
 //var guy = new Entity([470, 300], [11, 17], 0, new Sprite('img/guy.png'), [500, 100], [500, 100])
 //
 socket.on('player joined', function (data) {
     if (data.playerNum != clientNumber) {
         console.log("got here");
-        enemies = true;
-        //addEnemey(data);
+        addEnemy(data);
     }
 });
 
@@ -102,7 +101,7 @@ function render() {
     // Render the player
     renderEntity(player);
 //    renderEntity(guy);
-    if (enemies)
+    for (enemy in enemies)
         renderEntity(enemy);
 }
 
@@ -110,12 +109,7 @@ function renderEntity(entity) {
     entity.sprite.render();
 }
 
-function addPlayer(data){
-    enemies[data.playerNum] =  new Entity.call([500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
-    console.log("Player " + data.playerNum + " joined the game.");
-}
 
 function addEnemy(data) {
-    var enemy = new Entity.call([500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
-    enemies[data.playerNum] = enemy;
+    enemies[data.playerNum] = new Entity([500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
 }
