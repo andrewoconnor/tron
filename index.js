@@ -26,6 +26,7 @@ io.on('connection', function(socket){
             numPlayers: numPlayers
         });
         numPlayers++;
+        console.log('player number - ' + numPlayers);
     });
     socket.on('entity moved', function(data) {
         console.log('position - moved ' + data);
