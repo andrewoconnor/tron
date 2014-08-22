@@ -11,6 +11,10 @@
     Player.prototype = Object.create(Entity.prototype);
     Player.prototype.constructor = Player;
 
+    Player.prototype.setPlayerNum = function(playerNum) {
+        this.playerNum = playerNum;
+    }
+
     Player.prototype.addPlayer = function() {
         socket.emit('add player');
     }
@@ -24,6 +28,7 @@
             console.log("data = " + temp);
             console.log("playerNum = " + this.playerNum);
             document.getElementById('debug4').innerHTML = this.playerNum;
+            this.setPlayerNum(temp);
         });
 
         console.log("playerNum = " + this.playerNum);
