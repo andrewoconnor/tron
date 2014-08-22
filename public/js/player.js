@@ -20,7 +20,7 @@
             
             var temp = parseInt(data.numPlayers);
             console.log("Player num = " + temp);
-            this.playerNum = data.numPlayers;
+            this.playerNum = temp;
         });
     }
 
