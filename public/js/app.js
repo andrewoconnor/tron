@@ -13,7 +13,7 @@ var requestAnimFrame = (function(){
 
 //Create socket
 //var socket = io();
-var peer = new Peer('someid', {host: 'localhost', port: 57888, path: '/public'});
+var peer = new Peer('someid', {host: 'www.calusari.net', port: 57888});
 
 //Create canvas
 var canvas = document.createElement("canvas");
