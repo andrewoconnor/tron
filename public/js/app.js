@@ -11,9 +11,31 @@ var requestAnimFrame = (function(){
         };
 })();
 
+var $usernameInput = $('.usernameInput');
+var $loginPage = $('.login.page');
+var $gamePage = $('.game.page');
+
+var peer;
+function setUsername () {
+    username = cleanInput($usernameInput.val().trim());
+
+    // If the username is valid
+    if (username) {
+        $loginPage.fadeOut();
+        $gamePage.show();
+        $loginPage.off('click');
+
+        // Tell the server your username
+        peer = new Peer(username, {host: 'www.calusari.net', port: 57888});
+    }
+}
+
+while (!username)
+    setUsername();
+
 //Create socket
 //var socket = io();
-var peer = new Peer('someid', {host: 'www.calusari.net', port: 57888});
+
 
 //Create canvas
 var canvas = document.createElement("canvas");
