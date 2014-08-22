@@ -23,7 +23,7 @@ var canvas = document.createElement("canvas");
 var context = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 600;
-$gamePage.appendChild(canvas);
+$gamePage.append(canvas);
 
 function setUsername () {
     username = cleanInput($usernameInput.val().trim());
