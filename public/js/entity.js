@@ -15,6 +15,7 @@
     Entity.prototype = {
         sendEntityData: function() {
             var message = {};
+            message['clientNum'] = clientNumber;
             message['pos'] = this.pos;
             message['deg'] = this.deg;
 

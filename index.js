@@ -30,7 +30,7 @@ io.on('connection', function(socket){
     });
 
     socket.on('entity moved', function(data) {
-        console.log('position - moved ' + data);
+        console.log(data);
         socket.broadcast.emit('entity moved', {
             message: data
         });
