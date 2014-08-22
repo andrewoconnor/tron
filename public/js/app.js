@@ -104,5 +104,6 @@ function addPlayer(data){
 }
 
 socket.on('player joined', function (data) {
-    addPlayer(data);
+    if (data.playerNum != clientNumber)
+        addPlayer(data);
 });
