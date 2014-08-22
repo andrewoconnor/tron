@@ -60,7 +60,7 @@ var camera = new Camera(player);
 socket.on('player joined', function (data) {
     if (data.playerNum != clientNumber) {
         console.log("got here");
-        addEnemey(data);
+        //addEnemey(data);
     }
 });
 
