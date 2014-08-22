@@ -17,10 +17,12 @@
 
     Player.prototype.login = function() {
         socket.on('login', function (data) {
-            
+
             var temp = parseInt(data.numPlayers);
-            console.log("Player num = " + temp);
+
             this.playerNum = temp;
+            console.log("data = " + temp);
+            console.log("playerNum = " + this.playerNum);
         });
     }
 
