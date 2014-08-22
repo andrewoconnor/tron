@@ -51,7 +51,7 @@ function init() {
 }
 
 // Game state
-
+var clientNumber = 0;
 var player = new Player();
 var camera = new Camera(player);
 //var guy = new Entity([470, 300], [11, 17], 0, new Sprite('img/guy.png'), [500, 100], [500, 100])
@@ -82,6 +82,7 @@ function updateEntities(dt) {
     document.getElementById('debug').innerHTML = player.currentVelocity[0];
     document.getElementById('debug2').innerHTML = player.pos;
     document.getElementById('debug3').innerHTML = Math.abs(Math.cos(player.deg * (Math.PI / 180)));
+    document.getElementById('debug4').innerHTML = clientNumber;
 }
 
 function render() {

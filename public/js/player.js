@@ -8,10 +8,6 @@
         this.login();
     }
 
-    function setPlayerNum(playerNum) {
-        this.playerNum = playerNum;
-    }
-
     Player.prototype = Object.create(Entity.prototype);
     Player.prototype.constructor = Player;
 
@@ -29,8 +25,8 @@
             this.playerNum = temp;
             console.log("data = " + temp);
             console.log("playerNum = " + this.playerNum);
-            document.getElementById('debug4').innerHTML = this.playerNum;
-            setPlayerNum(temp);
+//            document.getElementById('debug4').innerHTML = this.playerNum;
+            clientNumber = temp;
         });
 
         console.log("playerNum = " + this.playerNum);
