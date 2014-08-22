@@ -48,6 +48,11 @@ function init() {
     world.init();
 	lastTime = Date.now();
 	main();
+
+    socket.on('player joined', function (data) {
+        if (data.playerNum != clientNumber)
+            addPlayer(data);
+    });
 }
 
 // Game state
@@ -106,7 +111,3 @@ function addPlayer(data){
     console.log("Player " + data.playerNum + " joined the game.");
 }
 
-socket.on('player joined', function (data) {
-    if (data.playerNum != clientNumber)
-        addPlayer(data);
-});
