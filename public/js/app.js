@@ -12,7 +12,8 @@ var requestAnimFrame = (function(){
 })();
 
 //Create socket
-var socket = io();
+//var socket = io();
+var peer = new Peer('someid', {host: 'localhost', port: 57888, path: '/public'});
 
 //Create canvas
 var canvas = document.createElement("canvas");
@@ -58,19 +59,19 @@ var enemies = {};
 var camera = new Camera(player);
 //var guy = new Entity([470, 300], [11, 17], 0, new Sprite('img/guy.png'), [500, 100], [500, 100])
 //
-socket.on('player joined', function (data) {
-    if (data.playerNum != clientNumber) {
-        console.log("got here");
-        addEnemy(data.playerNum);
-    }
-});
-
-socket.on('entity moved', function(data) {
-    if (data.playerNum != clientNumber) {
-        enemies[data.playerNum].pos = data.pos;
-        enemies[data.playerNum].deg = data.deg;
-    }
-});
+//socket.on('player joined', function (data) {
+//    if (data.playerNum != clientNumber) {
+//        console.log("got here");
+//        addEnemy(data.playerNum);
+//    }
+//});
+//
+//socket.on('entity moved', function(data) {
+//    if (data.playerNum != clientNumber) {
+//        enemies[data.playerNum].pos = data.pos;
+//        enemies[data.playerNum].deg = data.deg;
+//    }
+//});
 
 var lastFire = Date.now();
 var gameTime = 0;

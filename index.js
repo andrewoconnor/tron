@@ -1,5 +1,5 @@
 var PeerServer = require('peer').PeerServer;
-var server = new PeerServer({port: 9000, path: '/public'});
+var server = new PeerServer({port: 57888, path: '/public'});
 
 var express = require('express');
 var app = express();
@@ -13,6 +13,10 @@ app.use(express.static(__dirname + '/public'));
 //
 app.get('/', function(req, res){
     res.sendFile('index.html');
+});
+
+server.on('connection', function(id) {
+    console.log('a user connected');
 });
 //
 //io.on('connection', function(socket){
