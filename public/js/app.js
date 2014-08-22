@@ -101,8 +101,8 @@ function render() {
     // Render the player
     renderEntity(player);
 //    renderEntity(guy);
-    for (var enemy in enemies)
-        renderEntity(enemy);
+    for (var k in enemies)
+        renderEntity(enemies[k]);
 }
 
 function renderEntity(entity) {
