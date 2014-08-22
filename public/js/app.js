@@ -15,7 +15,16 @@ var $usernameInput = $('.usernameInput');
 var $loginPage = $('.login.page');
 var $gamePage = $('.game.page');
 
+var username;
 var peer;
+
+//Create canvas
+var canvas = document.createElement("canvas");
+var context = canvas.getContext("2d");
+canvas.width = 800;
+canvas.height = 600;
+$gamePage.appendChild(canvas);
+
 function setUsername () {
     username = cleanInput($usernameInput.val().trim());
 
@@ -43,12 +52,7 @@ $(window).keydown(function (event) {
 //var socket = io();
 
 
-//Create canvas
-var canvas = document.createElement("canvas");
-var context = canvas.getContext("2d");
-canvas.width = 800;
-canvas.height = 600;
-document.body.appendChild(canvas);
+
 
 resources.load([
     'img/terrain.png',
