@@ -16,7 +16,7 @@ app.get('/', function(req, res){
 });
 
 server.on('connection', function(id) {
-    console.log('a user connected');
+    console.log('user' + id + 'connected');
 });
 //
 //io.on('connection', function(socket){
