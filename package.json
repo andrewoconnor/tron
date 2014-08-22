@@ -1,7 +1,9 @@
 {
-  "name": "tron",
-  "version": "0.0.1",
-  "description": "awwww yeahhh",
-  "dependencies": {
-  }
+    "name": "tron",
+    "version": "0.0.1",
+    "description": "awwww yeahhh",
+    "dependencies": {
+        "peer": "~0.2.6"
+    }
 }
+
