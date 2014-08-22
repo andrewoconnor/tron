@@ -53,7 +53,7 @@ function init() {
 // Game state
 var clientNumber = 0;
 var player = new Player();
-var enemies = [];
+var enemies = {};
 var camera = new Camera(player);
 //var guy = new Entity([470, 300], [11, 17], 0, new Sprite('img/guy.png'), [500, 100], [500, 100])
 
