@@ -18,6 +18,8 @@ app.get('/', function(req, res){
 server.on('connection', function(id) {
     console.log('user ' + id + ' connected');
 });
+
+var game_server = new Peer('server', {host: 'localhost', port: 57888});
 //
 //io.on('connection', function(socket){
 //    console.log('a user connected');
