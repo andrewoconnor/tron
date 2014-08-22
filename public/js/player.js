@@ -23,7 +23,10 @@
             this.playerNum = temp;
             console.log("data = " + temp);
             console.log("playerNum = " + this.playerNum);
+            document.getElementById('debug4').innerHTML = player.playerNum;
         });
+
+        console.log("playerNum = " + this.playerNum);
     }
 
     window.Player = Player;
