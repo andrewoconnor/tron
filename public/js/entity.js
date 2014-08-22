@@ -21,7 +21,7 @@
 //
 //            var data = JSON.stringify(message);
             socket.emit('entity moved', {
-                clientNum: clientNumber,
+                playerNum: clientNumber,
                 pos: this.pos,
                 deg: this.deg
             });

@@ -66,7 +66,9 @@ socket.on('player joined', function (data) {
 });
 
 socket.on('entity moved', function(data) {
-
+    if (data.playerNum != clientNumber) {
+        enemies[data.playerNum].pos = data.pos;
+    }
 });
 
 var lastFire = Date.now();
