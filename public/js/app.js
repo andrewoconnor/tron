@@ -26,7 +26,7 @@ canvas.height = 600;
 $gamePage.append(canvas);
 
 function setUsername () {
-    username = ($usernameInput.val()).serialize();
+    username = cleanInput($usernameInput.val().trim());
 
     // If the username is valid
     if (username) {
@@ -37,6 +37,10 @@ function setUsername () {
         // Tell the server your username
         peer = new Peer(username, {host: 'www.calusari.net', port: 57888});
     }
+}
+
+function cleanInput (input) {
+    return $('<div/>').text(input).text();
 }
 
 $(window).keydown(function (event) {
