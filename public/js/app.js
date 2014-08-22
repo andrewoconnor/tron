@@ -93,6 +93,8 @@ function render() {
     // Render the player
     renderEntity(player);
 //    renderEntity(guy);
+    for (enemy in enemies)
+        renderEntity(enemy);
 }
 
 function renderEntity(entity) {
