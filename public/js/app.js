@@ -103,6 +103,7 @@ function renderEntity(entity) {
 
 function addPlayer(data){
     enemies[data.playerNum] =  new Entity.call([500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
+    console.log("Player " + data.playerNum + " joined the game.");
 }
 
 socket.on('player joined', function (data) {
