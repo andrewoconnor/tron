@@ -61,8 +61,12 @@ var camera = new Camera(player);
 socket.on('player joined', function (data) {
     if (data.playerNum != clientNumber) {
         console.log("got here");
-        addEnemy(data);
+        addEnemy(data.playerNum);
     }
+});
+
+socket.on('entity moved', function(data) {
+
 });
 
 var lastFire = Date.now();
@@ -110,6 +114,12 @@ function renderEntity(entity) {
 }
 
 
-function addEnemy(data) {
-    enemies[data.playerNum] = new Entity([500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
+function addEnemy(playerNum) {
+    enemies[playerNum] = new Entity([500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
+}
+
+function addEnemies(numPlayers) {
+    for (var i = 0; i < numPlayers; i++) {
+        addEnemy(i);
+    }
 }

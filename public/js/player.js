@@ -27,6 +27,8 @@
             console.log("playerNum = " + this.playerNum);
 //            document.getElementById('debug4').innerHTML = this.playerNum;
             clientNumber = temp;
+
+            addEnemies(data.numPlayers - 1);
         });
 
         console.log("playerNum = " + this.playerNum);
