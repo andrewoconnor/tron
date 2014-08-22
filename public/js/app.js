@@ -123,7 +123,7 @@ function addEnemy(playerNum) {
 }
 
 function addEnemies(numPlayers) {
-    for (var i = 0; i < numPlayers; i++) {
+    for (var i = 1; i < numPlayers; i++) {
         addEnemy(i);
     }
 }
