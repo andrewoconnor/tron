@@ -39,9 +39,7 @@ io.on('connection', function(socket){
 
     socket.on('entity moved', function(data) {
         console.log(data);
-        socket.broadcast.emit('entity moved', {
-            message: data
-        });
+        socket.broadcast.emit('entity moved', data);
     });
 });
 

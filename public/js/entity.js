@@ -14,13 +14,17 @@
 
     Entity.prototype = {
         sendEntityData: function() {
-            var message = {};
-            message['clientNum'] = clientNumber;
-            message['pos'] = this.pos;
-            message['deg'] = this.deg;
-
-            var data = JSON.stringify(message);
-            socket.emit('entity moved', data);
+//            var message = {};
+//            message['clientNum'] = clientNumber;
+//            message['pos'] = this.pos;
+//            message['deg'] = this.deg;
+//
+//            var data = JSON.stringify(message);
+            socket.emit('entity moved', {
+                clientNum: clientNumber,
+                pos: this.pos,
+                deg: this.deg
+            });
         },
         checkWorldBounds: function() {
             if (this.pos[0] < 10 + ((this.size[0] + 1) / 2))
