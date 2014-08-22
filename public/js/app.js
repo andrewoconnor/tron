@@ -26,7 +26,7 @@ canvas.height = 600;
 $gamePage.append(canvas);
 
 function setUsername () {
-    username = cleanInput($usernameInput.val().trim());
+    username = text($usernameInput.val());
 
     // If the username is valid
     if (username) {
