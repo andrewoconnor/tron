@@ -22,7 +22,7 @@
     Player.prototype.login = function() {
         socket.on('login', function (data) {
             console.log("Player num = " + data.numPlayers);
-            this.setPlayerNum(int(data.numPlayers));
+            this.setPlayerNum(parseInt(data.numPlayers));
         });
     }
 
