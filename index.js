@@ -32,7 +32,7 @@ io.on('connection', function(socket){
         console.log('player number - ' + numPlayers);
 
         socket.broadcast.emit('player joined', {
-            playerNumber: socket.username,
+            playerNumber: socket.clientNum,
             numPlayers: numPlayers
         });
     });
