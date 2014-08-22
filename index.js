@@ -1,7 +1,7 @@
 var PeerServer = require('peer').PeerServer;
 var server = new PeerServer({port: 57888});
 
-var Peer = require('peer').Peer;
+var PeerClient = require('peer').Peer;
 
 var express = require('express');
 var app = express();
@@ -21,7 +21,7 @@ server.on('connection', function(id) {
     console.log('user ' + id + ' connected');
 });
 
-var game_server = new Peer('server', {host: 'localhost', port: 57888});
+var game_server = new PeerClient('server', {host: 'localhost', port: 57888});
 //
 //io.on('connection', function(socket){
 //    console.log('a user connected');
