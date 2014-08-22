@@ -53,13 +53,15 @@ function init() {
 // Game state
 var clientNumber = 0;
 var player = new Player();
-var enemies = {};
+var enemies = false;
+var enemy = new Entity([500, 300], [19, 79], 0, new Sprite('img/bike.png'), [500, 100], [500, 100]);
 var camera = new Camera(player);
 //var guy = new Entity([470, 300], [11, 17], 0, new Sprite('img/guy.png'), [500, 100], [500, 100])
 //
 socket.on('player joined', function (data) {
     if (data.playerNum != clientNumber) {
         console.log("got here");
+        enemies = true;
         //addEnemey(data);
     }
 });
@@ -100,7 +102,7 @@ function render() {
     // Render the player
     renderEntity(player);
 //    renderEntity(guy);
-    for (enemy in enemies)
+    if (enemies)
         renderEntity(enemy);
 }
 
