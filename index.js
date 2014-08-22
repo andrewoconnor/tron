@@ -21,12 +21,20 @@ io.on('connection', function(socket){
         numPlayers--;
     });
     socket.on('add player', function () {
-        //socket.playerNum = numPlayers;
+
+        numPlayers++;
+        socket.clientNum = numPlayers;
+
         socket.emit('login', {
             numPlayers: numPlayers
         });
-        numPlayers++;
+
         console.log('player number - ' + numPlayers);
+
+        socket.broadcast.emit('player joined', {
+            playerNumber: socket.username,
+            numPlayers: numPlayers
+        });
     });
 
     socket.on('entity moved', function(data) {

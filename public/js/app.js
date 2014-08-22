@@ -53,6 +53,7 @@ function init() {
 // Game state
 var clientNumber = 0;
 var player = new Player();
+var enemies = [];
 var camera = new Camera(player);
 //var guy = new Entity([470, 300], [11, 17], 0, new Sprite('img/guy.png'), [500, 100], [500, 100])
 
@@ -97,3 +98,11 @@ function render() {
 function renderEntity(entity) {
     entity.sprite.render();
 }
+
+function addPlayer(data){
+    enemies.push(new Player(data.playerNum));
+}
+
+socket.on('player joined', function (data) {
+    addPlayer(data);
+});
