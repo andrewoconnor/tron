@@ -99,7 +99,7 @@ function updateEntities(dt) {
     document.getElementById('debug2').innerHTML = player.pos;
     document.getElementById('debug3').innerHTML = Math.abs(Math.cos(player.deg * (Math.PI / 180)));
     for (var k in enemies)
-        document.getElementById('debug4').innerHTML = String(enemies[k].toString());
+        document.getElementById('debug4').innerHTML = String(k);
 }
 
 function render() {
