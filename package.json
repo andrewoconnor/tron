@@ -4,7 +4,6 @@
     "description": "awwww yeahhh",
     "dependencies": {
         "express": "~4.8.5",
-        "webrtc.io": "0.0.4"
+        "rtc": "~2.1.7"
     }
 }
-
