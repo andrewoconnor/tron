@@ -13,15 +13,25 @@
 
 
     Player.prototype.connect = function() {
-//        socket.emit('add player');
-//        this.login();
+        socket.emit('add player');
+        this.login();
     }
 
     Player.prototype.login = function() {
-//        socket.on('login', function (data) {
-//            clientNumber = parseInt(data.numPlayers);
-//            addEnemies(data.numPlayers);
-//        });
+        socket.on('login', function (data) {
+
+            var temp = parseInt(data.numPlayers);
+
+            this.playerNum = temp;
+            console.log("data = " + temp);
+            console.log("playerNum = " + this.playerNum);
+//            document.getElementById('debug4').innerHTML = this.playerNum;
+            clientNumber = temp;
+
+            addEnemies(data.numPlayers - 1);
+        });
+
+        console.log("playerNum = " + this.playerNum);
     }
 
     window.Player = Player;

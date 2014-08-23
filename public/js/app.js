@@ -11,65 +11,15 @@ var requestAnimFrame = (function(){
         };
 })();
 
-var PORT = 57888;
-var HOST = 'www.calusari.net';
-
-var dgram = require('dgram');
-var message = new Buffer('My KungFu is Good!');
-
-var client = dgram.createSocket('udp4');
-client.send(message, 0, message.length, PORT, HOST, function(err, bytes) {
-    if (err) throw err;
-    console.log('UDP message sent to ' + HOST +':'+ PORT);
-    client.close();
-});
-
-//var $usernameInput = $('.usernameInput');
-//var $loginPage = $('.login.page');
-//var $gamePage = $('.game.page');
-//
-//var username;
-//var peer;
+//Create socket
+var socket = io();
 
 //Create canvas
 var canvas = document.createElement("canvas");
 var context = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 600;
-$gamePage.append(canvas);
-
-//function setUsername () {
-//    username = cleanInput($usernameInput.val().trim());
-//
-//    // If the username is valid
-//    if (username) {
-//        $loginPage.fadeOut();
-//        $gamePage.show();
-//        $loginPage.off('click');
-//
-//        // Tell the server your username
-////        peer = new Peer(username, {host: 'www.calusari.net', port: 57888});
-//    }
-//}
-
-function cleanInput (input) {
-    return $('<div/>').text(input).text();
-}
-
-$(window).keydown(function (event) {
-    // When the client hits ENTER on their keyboard
-    if (event.which === 13) {
-        if (!username) {
-            setUsername();
-        }
-    }
-});
-
-//Create socket
-//var socket = io();
-
-
-
+document.body.appendChild(canvas);
 
 resources.load([
     'img/terrain.png',
@@ -108,19 +58,19 @@ var enemies = {};
 var camera = new Camera(player);
 //var guy = new Entity([470, 300], [11, 17], 0, new Sprite('img/guy.png'), [500, 100], [500, 100])
 //
-//socket.on('player joined', function (data) {
-//    if (data.playerNum != clientNumber) {
-//        console.log("got here");
-//        addEnemy(data.playerNum);
-//    }
-//});
-//
-//socket.on('entity moved', function(data) {
-//    if (data.playerNum != clientNumber) {
-//        enemies[data.playerNum].pos = data.pos;
-//        enemies[data.playerNum].deg = data.deg;
-//    }
-//});
+socket.on('player joined', function (data) {
+    if (data.playerNum != clientNumber) {
+        console.log("got here");
+        addEnemy(data.playerNum);
+    }
+});
+
+socket.on('entity moved', function(data) {
+    if (data.playerNum != clientNumber) {
+        enemies[data.playerNum].pos = data.pos;
+        enemies[data.playerNum].deg = data.deg;
+    }
+});
 
 var lastFire = Date.now();
 var gameTime = 0;

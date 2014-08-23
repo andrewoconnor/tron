@@ -1,10 +1,10 @@
 var express = require('express');
 var app = express();
-var server = require('http').createServer(app);
-var port = process.env.PORT || 57888;
-server.listen(port);
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/public'));
+
 // player names which are currently connected to the game
 var playerNames = {};
 var numPlayers = 0;
@@ -13,17 +13,36 @@ app.get('/', function(req, res){
     res.sendFile('index.html');
 });
 
-var dgram = require('dgram');
-var game_server = dgram.createSocket('udp4');
+io.on('connection', function(socket){
+    console.log('a user connected');
 
-game_server.on('listening', function () {
-    var address = game_server.address();
-    console.log('UDP Server listening on ' + address.address + ":" + address.port);
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+        numPlayers--;
+    });
+    socket.on('add player', function () {
+
+        numPlayers++;
+        socket.clientNum = numPlayers;
+
+        socket.emit('login', {
+            numPlayers: numPlayers
+        });
+
+        console.log('player number - ' + numPlayers);
+
+        socket.broadcast.emit('player joined', {
+            playerNum: socket.clientNum,
+            numPlayers: numPlayers
+        });
+    });
+
+    socket.on('entity moved', function(data) {
+        console.log(data);
+        socket.broadcast.emit('entity moved', data);
+    });
 });
 
-game_server.on('message', function (message, remote) {
-    console.log(remote.address + ':' + remote.port +' - ' + message);
-
+http.listen(3000, function(){
+    console.log('listening on *:3000');
 });
-
-game_server.bind(port);
