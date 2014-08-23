@@ -10,7 +10,7 @@ server.listen(port);
 
 //var io = require('socket.io')(http);
 
-app.use(express.static(__dirname + '/public'));
+app.use(app.static(__dirname + '/public'));
 // player names which are currently connected to the game
 //var playerNames = {};
 //var numPlayers = 0;
