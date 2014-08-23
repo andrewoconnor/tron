@@ -1,7 +1,8 @@
 //var PeerServer = require('peer').PeerServer;
 //var server = new PeerServer({port: 57888});
 
-var app = require('express')();
+var express = require('express');
+var app = express();
 var server = require('http').createServer(app);
 var webRTC = require('webrtc.io').listen(server);
 
@@ -10,7 +11,7 @@ server.listen(port);
 
 //var io = require('socket.io')(http);
 
-app.use(app.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 // player names which are currently connected to the game
 //var playerNames = {};
 //var numPlayers = 0;
@@ -59,6 +60,3 @@ webRTC.rtc.on('add player', function(data, socket) {
 //    });
 //});
 //
-http.listen(3000, function(){
-    console.log('listening on *:3000');
-});
