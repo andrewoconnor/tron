@@ -11,12 +11,15 @@ var requestAnimFrame = (function(){
         };
 })();
 
-var $usernameInput = $('.usernameInput');
-var $loginPage = $('.login.page');
-var $gamePage = $('.game.page');
+var PeerConnection = window.PeerConnection || window.webkitPeerConnection00 || window.webkitRTCPeerConnection ||
+                     window.mozRTCPeerConnection || window.RTCPeerConnection;
 
-var username;
-var peer;
+//var $usernameInput = $('.usernameInput');
+//var $loginPage = $('.login.page');
+//var $gamePage = $('.game.page');
+//
+//var username;
+//var peer;
 
 //Create canvas
 var canvas = document.createElement("canvas");
@@ -25,19 +28,19 @@ canvas.width = 800;
 canvas.height = 600;
 $gamePage.append(canvas);
 
-function setUsername () {
-    username = cleanInput($usernameInput.val().trim());
-
-    // If the username is valid
-    if (username) {
-        $loginPage.fadeOut();
-        $gamePage.show();
-        $loginPage.off('click');
-
-        // Tell the server your username
-        peer = new Peer(username, {host: 'www.calusari.net', port: 57888});
-    }
-}
+//function setUsername () {
+//    username = cleanInput($usernameInput.val().trim());
+//
+//    // If the username is valid
+//    if (username) {
+//        $loginPage.fadeOut();
+//        $gamePage.show();
+//        $loginPage.off('click');
+//
+//        // Tell the server your username
+////        peer = new Peer(username, {host: 'www.calusari.net', port: 57888});
+//    }
+//}
 
 function cleanInput (input) {
     return $('<div/>').text(input).text();

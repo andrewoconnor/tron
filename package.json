@@ -3,9 +3,8 @@
     "version": "0.0.1",
     "description": "awwww yeahhh",
     "dependencies": {
-        "peer": "~0.2.6",
         "express": "~4.8.5",
-        "requirejs": "~2.1.14"
+        "webrtc.io": "0.0.4"
     }
 }
 

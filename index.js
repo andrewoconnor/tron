@@ -1,11 +1,13 @@
-var PeerServer = require('peer').PeerServer;
-var server = new PeerServer({port: 57888});
+//var PeerServer = require('peer').PeerServer;
+//var server = new PeerServer({port: 57888});
 
-var Peer = require('./peer.min.js');
+var app = require('express')();
+var server = require('http').createServer(app);
+var webRTC = require('webrtc.io').listen(server);
 
-var express = require('express');
-var app = express();
-var http = require('http').createServer(app);
+var port = process.env.PORT || 57888;
+server.listen(port);
+
 //var io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/public'));
@@ -17,11 +19,15 @@ app.get('/', function(req, res){
     res.sendFile('index.html');
 });
 
-server.on('connection', function(id) {
-    console.log('user ' + id + ' connected');
+webRTC.rtc.on('add player', function(data, socket) {
+
 });
 
-var game_server = new Peer('server', {host: 'localhost', port: 57888});
+//server.on('connection', function(id) {
+//    console.log('user ' + id + ' connected');
+//});
+
+//var game_server = new Peer('server', {host: 'localhost', port: 57888});
 //
 //io.on('connection', function(socket){
 //    console.log('a user connected');
