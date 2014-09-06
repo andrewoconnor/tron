@@ -49,6 +49,8 @@
 //                this.currentVelocity[0] = 0;
 //            this.currentAcceleration
 
+            // cA = mA * ((mV - cV )/ mV)
+
             this.applyVelocity(this.currentVelocity[0], this.deg, dt);
             this.applyVelocity(this.lastForce[0], this.lastForce[1], dt);
             this.checkWorldBounds();
@@ -101,7 +103,11 @@
         },
         accelerate: function(dt) {
 
-            this.currentAcceleration[0] = this.maxAcceleration[0] - this.currentVelocity[0];
+            // cA = mA * ((mV - cV )/ mV)
+
+            this.currentAcceleration[0] = this.maxAcceleration[0] *
+                                          ((this.maxVelocity[0] - this.currentVelocity[0]) / this.maxVelocity[0]);
+            //this.currentAcceleration[0] = this.maxAcceleration[0] - this.currentVelocity[0];
 
             if (this.currentVelocity[0] + this.currentAcceleration[0] * dt > this.maxVelocity[0])
                 this.currentVelocity[0] = this.maxVelocity[0];
